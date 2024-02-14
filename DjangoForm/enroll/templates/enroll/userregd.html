@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+    </style>
+</head>
+<body style="text-align: center;">
+    
+        <button style="background-color: green; border: 1px solid black; padding: 5px 10px; border-radius: 5px;"><a style="text-decoration: none; color: white;" href="/user">User</a></button>
+        <h2>as name of field</h2>
+        <form>
+            {{form.email.label_tag}}
+            {{form.email}}
+            {{form.number}}
+            <input type="submit" value="submit">
+        </form>
+        <hr>
+
+        <h2>as-ul</h2>
+        <form>
+            {{form.as_ul}}
+            <input type="submit" value="submit">
+        </form>
+        <hr>
+        <h2>as-p</h2>
+        <form>
+            {{form.as_p}}
+            <input type="submit" value="submit">
+        </form>
+        <hr>
+        <h2>as-table</h2>
+        <form>
+            {{form.as_table}}
+            <input type="submit" value="submit">
+        </form>
+        <!-- <form>
+            {{form.as_table}}
+            <input type="submit" value="submit">
+        </form>  -->
+        <hr>
+        <h2>Access Single element tag </h2>
+        {{form.name.label_tag}} <br>
+        {{form.email.label_tag}} <br>
+        {{form.password.label}} <br>
+        {{form.number.label}} <br>
+        {{form.name.label_tag}}
+<hr>
+        <h2>using loop</h2>
+        {% for field in form %}
+             <!-- {{field.label}}   -->
+             {{field.label_tag}} 
+             {{field}} <br>
+        {% endfor %}
+</body>
+</html>

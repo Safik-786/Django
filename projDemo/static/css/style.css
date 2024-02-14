@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: white;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(magenta, aqua);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(rgb(5, 244, 5), yellow, rgb(20, 245, 20));
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+a {
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all;
+}
+
+header {
+    /* backdrop-filter: blur(3px); */
+    background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+.navbar {
+    display: flex;
+    gap: 24px;
+    /* background-color: rgba(255, 255, 255, 0.1); */
+}
+.logoo{
+    filter: drop-shadow(3px 3px 20px #ff99cc);
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    /* position: fixed; */
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+    
+    
+}
+
+a {
+    color: white;
+    font-weight: 600;
+    font-size: larger;
+    text-shadow: 3px 3px 20px #ff99cc,
+    -2px 1px 30px #ff99cc;
+}
+
+a:hover {
+    color: #FE83FF;
+    background: linear-gradient(135deg,rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+.active{
+    color: #FE83FF;
+    background: linear-gradient(135deg,rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+}
+
+#purple,
+#moon {
+    mix-blend-mode: screen;
+}
+
+.hero p {
+    position: absolute;
+    top: 50%;
+    font-size: 80px;
+    font-weight: 800;
+    text-align: center;
+    width: 100%;
+    line-height: 1.1;
+    text-shadow: 8px 8px 6px black;
+    transform: translateY(-50%);
+}
+
+.hero p span {
+    font-weight: 300;
+    font-size: 48px;
+}
+
+main {
+    position: relative;
+    padding: 92px 48px;
+    background-color: black;
+}
+
+main div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 20px;
+}
+
+main h2 {
+    font-size: 40px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.division {
+    position: absolute;
+    top: 95px;
+    padding-left: 36px;
+
+}
+
+.img{
+    display: inline-block;
+    height: 60px;
+    width: auto;
+    /* mix-blend-mode: screen; */
+
+}
+
+.img {
+    transition: all;
+    animation: move 5s 1;
+}
+
+@keyframes move {
+    from {
+        margin-right: 0px;
+    }
+
+    to {
+        margin-right: 1500px;
+    }
+}
+
+.footer{
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    text-align: center;
+}
+.footer p{
+    display: inline-block;
+    padding: 20px 20px;
+    color: aqua;
+}
+h1{
+    color: white;
+
+    text-shadow: 3px 3px 20px #ff99cc,
+    -2px 1px 30px #ff99cc;
+}
+
+
+/* course page */
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    padding-top: 100px;
+    grid-gap: 20px;
+    
+}
+.course{
+    height: 200px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    text-align: center;
+    line-height: 200px;
+}
+
+
+
+
+

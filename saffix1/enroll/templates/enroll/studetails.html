@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getData from DB</title>
+</head>
+<body>
+    <h2>Student Page</h2>
+    {% if stu %}
+    <h1>show Data</h1>
+    <h3>{{stu}}</h3>
+    <table cellpadding="15" border="1" >
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>stuid</th>
+                <th>stuname</th>
+                <th>stuemail</th>
+                <th>stupass</th>
+                <th>comment</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for st in stu %}
+        {% comment %} <h2>{{st}}</h2>
+        id:<span>{{st.id}}</span><br>
+        stuid:<span>{{st.stuid}}</span><br>
+        stuname:<span>{{st.stuname}}</span><br>
+        stuemail:<span>{{st.stuemail}}</span><br>
+        stupass:<span>{{st.stuepass}}</span><br>  {% endcomment %}
+            <tr>
+                <td>{{st.id}}</td>
+                <td>{{st.stuid}}</td>
+                <td>{{st.stuname}}</td>
+                <td>{{st.stuemail}}</td>
+                <td>{{st.stuepass}}</td>
+                <td>{{st.comment}}</td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h1>No Data</h1>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+<header class="heads">
+    <div><img class="logoo" src="/static/images/logoooo.png" height="50" alt=""></div>
+    <ul class="navbar">
+        {% comment %} {{request.path}}  {% endcomment %}
+        <li><a class="{% if request.path == "/" %} active {% endif %}" href="{% url "home" %}">Home</a></li>
+        <li><a class="{% if request.path == "/aboutus/" %} active {% endif %}" href="{% url "about" %}">About</a></li>
+        <li><a class="{% if request.path == "/course/" %} active {% endif %}" href="{% url "course" %}">Courses</a></li>
+        <li><a class="{% if request.path == "/contact/" %} active {% endif %}" href="#">Contact</a></li>
+    </ul>
+</header>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Post</title>
+    <style>
+        
+        input{
+            margin:10px 20px;
+            
+        }
+        #submit{
+            margin:20px 100px;
+        }
+        form{
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            width:400px;
+            margin:auto;
+            margin-top:100px;
+            color: #fff;
+            padding-top: 50px ;
+        }
+    </style>
+</head>
+
+
+<body>
+    
+    {% include "enroll/header.html" %}
+    
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {{frm.as_ul}}
+        <input id='submit' type="submit" value="submit" ><br>
+        {%if messages %}
+            {% for msg in  messages%}
+                <small style="color: green;">{{msg}}</small>
+            {% endfor%}
+            
+        {%  endif  %}
+    </form>
+</body>
+</html>
