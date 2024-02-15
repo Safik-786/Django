@@ -6,15 +6,44 @@
     <title>Document</title>
 </head>
 <body>
-    {% if messages %}
-        {% for message in messages %}
-            <p  {% if message.tags %} class='{{message.tags}}' {% endif %}> {{message}}  </p>
-        {% endfor %} 
-    {% endif %}
-    <h2>hii... {{request.user}}</h2>
 
-    <br><br><br><br><br><br><br>
-    <a href="{% url "logout" %}">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="{% url "changepass" %}">Change Password</a>
+<div style='display:flex; justify-content:space-evenly;'>
+
+    <div>
+
+        
+        {% if messages %}
+        {% for message in messages %}
+        <p  {% if message.tags %} class='{{message.tags}}' {% endif %} style='color:green;'> {{message}}  </p>
+        {% endfor %} 
+        {% endif %}
+        <h2>Hii... Welcome {{request.user}}</h2>
+        <form action="" method='POST' novalidate>
+            {% csrf_token %}
+            {% for fm in form %}
+            {{fm.label_tag}} {{fm}}  <span>{{fm.errors| striptags}}</span> <br><br>
+            {% endfor %}
+            <input type="submit" value='Save'>
+        </form>
+        
+        <br><br><br>
+        <a href="{% url "logout" %}">logout</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{% url "changepass" %}">Change Password</a>
+        
+    </div>
+
+    <div>
+        {% if request.user.is_superuser %}
+        <h2>Available users are :</h2>
+            {% for user in users %}
+            <div style='border:1px solid aqua;  margin: 10px; background-color: aqua; padding:10px 30px;' >
+                <a style='text-decoration:none;  color:red;' href="{% url "userdetail" user.id %}"> {{user.username}} </a> 
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+</div>    
+
 </body>
 </html>

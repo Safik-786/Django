@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm , UserChangeForm
 from django import forms
 # to adding more field from UserCreationForm class
 
@@ -20,5 +20,21 @@ class SignupForm(UserCreationForm):
         
         # adding class name to the respective tag
         widgets= {'username' : forms.TextInput(attrs={'class':'form-field safik'}), 'email':forms.EmailInput(attrs={'class':'form-field'})}
+        
+class EditUserProfileForm(UserChangeForm):
+    password= None;
+    class Meta:
+        model= User
+        fields=['username','first_name','last_name','email', 'date_joined', 'last_login']
+        label= {'email':'Email'}  # i change email lebel bocoz it bydefault print email Address
+        
+class EditAdminProfileForm(UserChangeForm):
+    class Meta:
+        model= User
+        fields= '__all__'
+        label= {'email':'Email'}  
+    password = None
+        
+        
         
        

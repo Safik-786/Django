@@ -1,21 +1,27 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .forms import SignupForm
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from .forms import SignupForm, EditUserProfileForm, EditAdminProfileForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 
 # Signup/ register view function
 def signup(request):
-    if request.method == 'POST':
-        form=UserCreationForm(request.POST)
-        if form.is_valid():
-            messages.success(request, "Account Created Successfully!!")
-            form.save()
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form=SignupForm(request.POST)
+            if form.is_valid():
+                messages.success(request, "Account Created Successfully!!")
+                form=SignupForm()
+                form.save()
+        else:
+            form= SignupForm()
+        return render(request, 'signup.html', {'form':form})
     else:
-        form= UserCreationForm()
-    return render(request, 'signup.html', {'form':form})
+        return HttpResponseRedirect('/profile/')
+    
 
 # Login
 def userLogin(request):
@@ -42,7 +48,24 @@ def userLogin(request):
 
 def userprofile(request):
     if request.user.is_authenticated:
-        return render(request, 'profile.html')
+        if request.method == 'POST':
+            if request.user.is_superuser:
+                fm= EditAdminProfileForm(request.POST, instance=request.user)
+                users= User.objects.all()
+            else:
+                fm= EditUserProfileForm(request.POST, instance=request.user)
+                users=None
+            if fm.is_valid():
+                messages.success(request, 'Profile Updated Successfully..')
+                fm.save()
+        else:
+            if request.user.is_superuser:
+                fm= EditAdminProfileForm(instance= request.user)
+                users= User.objects.all()
+            else:
+                fm= EditUserProfileForm(instance= request.user)
+                users=None;
+        return render(request, 'profile.html' ,{'form':fm, 'users':users})
     else :
         return HttpResponseRedirect("/login/")
 
@@ -54,7 +77,6 @@ def userLogout(request):
 
 
 # change password with old password
-@login_required
 def userChangePass(request):
     if request.user.is_authenticated:
         if request.method== 'POST':
@@ -68,5 +90,13 @@ def userChangePass(request):
         else:
             fm= PasswordChangeForm(user=request.user)
         return render(request, 'changepass.html', {'form':fm})
+    else:
+        return HttpResponseRedirect('/login/')
+    
+def userDetail(request, id):
+    if request.user.is_authenticated:
+        pi= User.objects.get(pk= id)
+        fm= EditAdminProfileForm(instance= pi)
+        return render(request, 'userdetail.html', {'form':fm})
     else:
         return HttpResponseRedirect('/login/')
