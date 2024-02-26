@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+        
+{% for err in form.non_field_errors %}
+    <p class='alert alert-danger'> {{err}} </p>
+{% endfor %}
+    <div class='col-sm-5 mx-auto shadow my-4 p-0 border mt-5'>
+        <div class='h3 form-header mx-0 p-4 text-center text-white '>Login</div>
+        <form  class='px-5' method='POST' novalidate >
+            {% csrf_token %}
+            {% for fm in form %}
+            <div class="form-group text-white">
+                {{fm.label_tag}} {{fm}} <small class='text-warning'>{{fm.errors|striptags}}</small><br> 
+            </div>
+            {% endfor %} 
+            <div class='text-end px-3'>
+                <input class='btn btn-dark mb-4' type="submit" value='Submit'>
+            </div>
+            <div class='mb-4 mt-0 mx-4'>
+                <span class='text-primary'>new user? </span> <a class='link text-danger' href='{% url "signup" %}'>Sign-up</a>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

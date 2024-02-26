@@ -95,8 +95,14 @@ def userChangePass(request):
     
 def userDetail(request, id):
     if request.user.is_authenticated:
-        pi= User.objects.get(pk= id)
-        fm= EditAdminProfileForm(instance= pi)
+        if request.method == 'POST':
+            data= User.objects.get(pk=id)
+            fm= EditAdminProfileForm(request.POST, instance=data)
+            if fm.is_valid():
+                fm.save()
+        else:
+            pi= User.objects.get(pk= id)
+            fm= EditAdminProfileForm(instance= pi)
         return render(request, 'userdetail.html', {'form':fm})
     else:
         return HttpResponseRedirect('/login/')

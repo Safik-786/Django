@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <div class='text-end mt-3'>
+    <a href="{% url "add" %}" class=' button-33  mb-3'>Add Post</a>
+  </div>
+
+    <div class="col-sm-12">
+        {% for data in data %}
+        <div class="jumbotron jumbotron-fluid ">
+            <div class="container">
+              <h1 class='text-center heading mb-3'>{{data.title}}</h1>
+              <p class="lead text-white">{{data.description}}</p>
+              <div class='text-end fontt text-white'>author: {{data.author}}</div>
+            </div>
+          </div>
+          {% endfor %}
+
+         
+
+    </div>
+{% endblock content %}
+

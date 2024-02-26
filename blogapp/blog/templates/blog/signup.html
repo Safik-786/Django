@@ -1,0 +1,43 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if messages %}
+    {% for msg in messages %}
+    <div {% if msg %} class="alert alert-{{msg.tags}} alert-dismissible fade show text-center" {% endif %} role="alert">
+        <strong> {{msg}} </strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+{% endif %}
+
+
+
+
+{% for err in form.non_field_errors %}
+    <p class='alert alert-danger'> {{err}} </p>
+{% endfor %}
+    <div class='col-sm-7 mx-auto shadow my-2 p-0 border'>
+        <div class='h3 form-header mx-0 p-4 text-center text-white'>Sign-Up</div>
+        <form action="" method='POST' class='px-5 ' novalidate>
+            {% csrf_token %}
+            {% for fm in form %}
+            <div class="form-group text-white">
+                {{fm.label_tag}} {{fm}}  <small class='text-warning'>{{fm.errors|striptags}}</small><br> 
+            </div>
+            {% endfor %} 
+            <div class='text-end px-3'>
+                <input class='btn btn-dark mb-4 glorish' type="submit" value='Submit'>
+            </div>
+
+            <div class='mb-4 mt-0 mx-4'>
+                <span class='text-primary'>Existing user? </span> <a class='link text-danger' href='{% url "login" %}'>Login</a>
+            </div>
+
+        </form>
+    </div>
+
+{% endblock content %}
