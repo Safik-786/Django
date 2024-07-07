@@ -14,6 +14,7 @@
               <h1 class='text-center heading mb-3'>{{data.title}}</h1>
               <p class="lead text-white">{{data.description}}</p>
               <div class='text-end fontt text-white'>author: {{data.author}}</div>
+              <a href="{%  url 'update' data.id %}" class="button-33">Update</a>
             </div>
           </div>
           {% endfor %}

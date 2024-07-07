@@ -18,8 +18,6 @@ def form(request):
             # reg.save()
             delete= User(id=1)
             delete.delete()
-            
-            
     else:
         frm=FormPost()
         print('message from get request')

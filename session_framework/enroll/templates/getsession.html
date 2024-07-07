@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>get Session  page</h2>
+    <a href="/">Home</a>
+    <a href="/del">Delete Session</a><br><br>
+    <h4>key= {{key}} </h4>
+    <h4>key-2= {{key2}} </h4><br>
+    <hr>
+    key() method
+    {% for key in request.session.keys %}
+        <h2>{{key}}</h2>
+    {% endfor %}
+    <hr>
+    items() method
+    {% for key, value in request.session.items %}
+        <h2>{{key}} {{value}} </h2>
+    {% endfor %}
+    <hr>
+    {{age}}
+
+</body>
+</html>

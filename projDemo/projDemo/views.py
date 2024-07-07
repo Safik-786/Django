@@ -21,3 +21,5 @@ def course(request):
 
 def courseDetails(request,courseid):
     return HttpResponse(f"Hii this is course -:   {courseid}")
+def contact(request):
+    return render(request, 'contact.html')

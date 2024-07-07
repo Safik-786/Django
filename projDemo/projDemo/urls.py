@@ -27,4 +27,5 @@ urlpatterns = [
     # path('course/<str:courseid>', views.courseDetails),
     # path('course/<slug:courseid>', views.courseDetails),
     path('course/<courseid>', views.courseDetails),                 # if datatype is't specified
+    path('contact/', views.contact, name= "contact")
 ]

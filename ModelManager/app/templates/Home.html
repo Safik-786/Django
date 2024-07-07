@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body >
+    <div style="display:flex; justify-content:space-between ">
+        <div>
+            <h4>Student.objects.all()</h4>
+            <table border= '1' bordercolor='blue' cellpadding= '10' align='center' bgcolor='cyan'>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>roll</th>
+                        <th>age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stu in student %}
+                    
+                    <tr>
+                        <td> {{stu.id}} </td>
+                        <td> {{stu.name}} </td>
+                        <td> {{stu.roll}} </td>
+                        <td> {{stu.age}} </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br><br>
+        <div>
+            <h4>Student.students.all()</h4>
+            <table border= '1' bordercolor='blue' cellpadding= '10' align='center' bgcolor='yellow'>
+                <thead>
+
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>roll</th>
+                        <th>age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stu in stu_ord %}
+                    
+                    <tr>
+                        <td> {{stu.id}} </td>
+                        <td> {{stu.name}} </td>
+                        <td> {{stu.roll}} </td>
+                        <td> {{stu.age}} </td>
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

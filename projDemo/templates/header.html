@@ -19,6 +19,6 @@
         <li><a class="{% if request.path == "/" %} active {% endif %}" href="{% url "home" %}">Home</a></li>
         <li><a class="{% if request.path == "/aboutus/" %} active {% endif %}" href="{% url "about" %}">About</a></li>
         <li><a class="{% if request.path == "/course/" %} active {% endif %}" href="{% url "course" %}">Courses</a></li>
-        <li><a class="{% if request.path == "/contact/" %} active {% endif %}" href="#">Contact</a></li>
+        <li><a class="{% if request.path == "/contact/" %} active {% endif %}" href="{% url "contact" %}">Contact</a></li>
     </ul>
 </header>
